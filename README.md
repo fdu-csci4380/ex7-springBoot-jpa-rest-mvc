@@ -57,6 +57,11 @@ http://localhost:8888/h2-console
 ```
 mongod
 ```
++ make sure you the default data directory is there for mongodb to use
+```
+ls -lrtd /c/data/db
+mkdir -p /c/data/db
+```
 + then connect to it via mongodb client that comes with mongodb install, at command prompt issue
 ```
 mongo
@@ -70,6 +75,15 @@ mongo
 ```
 mongo --eval "db.getSiblingDB('admin').shutdownServer()"
 ```
++ to see your collection in mongodb via mongo
+```
+mongo
+show dbs
+use UniversityDb
+show collections
+db.Teacherss.find()
+```
+
 
 ## To create the project in STS
 1. File -> New -> Spring Starter Project
@@ -101,7 +115,7 @@ mongo --eval "db.getSiblingDB('admin').shutdownServer()"
 + make sure angular CLI is installed (check its version). Make sure it is higher than 1.6.3. And if not installed, install it.
 ```
 ng -v
-ng install -g @angular/cli
+npm install -g @angular/cli
 ```
 + if your CLI version is 1.6.3 or lower or lower than 1.6.5, then probably "ng serve" will fail, then check your angular CLI version and upgrade to latest
 ```
