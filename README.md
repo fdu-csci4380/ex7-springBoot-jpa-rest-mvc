@@ -90,32 +90,23 @@ mongo
 mongo --version
 mongo -h
 ```
-+ to query mongoDb
-```
-mongo
-> show dbs
-> use UniversityDb
-> show collections
-> db.Teachers.find()
-```
-+ to shutdown the mongoDb that is running from mongodb client mongo command prompt
-```
->use admin
->db.shutdownServer()
-```
-+ or you can shutdown mongoDb by issuing at command prompt
-```
-mongo --eval "db.getSiblingDB('admin').shutdownServer()"
-```
-+ to see your collection in mongodb via mongo
++ see your collection in mongodb via mongo and to query mongoDb
 ```
 mongo
 show dbs
 use UniversityDb
 show collections
-db.Teacherss.find()
+db.Teachers.find()
 ```
-
++ to shutdown the mongoDb that is running from mongodb client mongo command prompt
+```
+use admin
+db.shutdownServer()
+```
++ or you can shutdown mongoDb by issuing at command prompt
+```
+mongo --eval "db.getSiblingDB('admin').shutdownServer()"
+```
 
 ## To create the project in STS
 1. File -> New -> Spring Starter Project
