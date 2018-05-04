@@ -57,7 +57,7 @@ public class TeacherRestController {
 	}
 
 	// curl -i http://localhost:8888/rest/v1/teachers
-	// curl -i http://localhost:8888/rest/v1/teachers?page=0&rowsPerPage=5
+	// curl -i "http://localhost:8888/rest/v1/teachers?page=0&rowsPerPage=5"
 	@GetMapping("")
 	public Page<Teacher> findAll(@RequestParam(defaultValue="0") int page, @RequestParam(value="rowsPerPage", defaultValue="5") int size) {
 		Page<Teacher> teachersPage = teacherRepository.findAll(new PageRequest(page, size));
@@ -71,7 +71,7 @@ public class TeacherRestController {
 		return teachers;
 	}
 
-	// curl -i http://localhost:8888/rest/v1/teachers/teacherId/1
+	// curl -i http://localhost:8888/rest/v1/teachers/5ad912c13eb4f729184980c1
 	@GetMapping("/{id}")
 	public  Optional<Teacher> findById(@PathVariable String id) {
 		Optional<Teacher> teacher = teacherRepository.findById(id);
@@ -85,8 +85,8 @@ public class TeacherRestController {
 		return teachers;
 	}
 	
-	// curl -i http://localhost:8888/rest/v1/teachers/age/19/25
-	@GetMapping("/age/{ageGT}/{ageLT}")
+	// curl -i http://localhost:8888/rest/v1/teachers/ageRange/19/25
+	@GetMapping("/ageRange/{ageGT}/{ageLT}")
 	public  List<Teacher> findMyByAgeBetween(@PathVariable Integer ageGT, @PathVariable Integer ageLT) {
 		List<Teacher> teachers = teacherRepository.findMyByAgeBetween(ageGT, ageLT);
 		return teachers;

@@ -39,6 +39,28 @@ http://localhost:8888/rest/v1/students								GET
 http://localhost:8888/rest/v1/students/all							GET
 http://localhost:8888/rest/v1/students								POST to create
 
+## sample curl commands to test REST services running
++ issue any of below curl commands at git bash command line to test REST services
+```
+curl -i -X GET http://localhost:8888/rest/v1/students/echoMessage
+curl -i -X GET http://localhost:8888/rest/v1/students/echoMessage?msg=Hi
+curl -i  http://localhost:8888/rest/v1/students
+curl -i  http://localhost:8888/rest/v1/students?page=2
+curl -i  http://localhost:8888/rest/v1/students?rowsPerPage=3
+curl -i "http://localhost:8888/rest/v1/students?page=2&rowsPerPage=3"
+curl -i http://localhost:8888/rest/v1/students/findByNameIgnoreCaseQuery/ILKer
+```
+```
+curl -X POST -H "Content-Type: application/json" -i  -d '{"name":"ilker_0", "lastname":"kiris_0", "grade":"freshman ", "age":200, "isFullTime":false, "updatedOn":"2018-04-29"}' http://localhost:8888/rest/v1/students
+curl -X POST -H "Content-Type: application/json"     -d '{"name":"ilker_1", "lastname":"kiris_1", "grade":"FreshMan",  "age":201, "isFullTime":false, "updatedOn":"2018-04-29"}' http://localhost:8888/rest/v1/students
+curl -X POST -H "Content-Type: application/json" --data '{"name":"ilker_2", "lastname":"kiris_2", "grade":" freshman", "age":202, "isFullTime":true,  "updatedOn":"2018-04-29"}' http://localhost:8888/rest/v1/students
+```
+```
+curl -i http://localhost:8888/rest/v1/teachers/messageInJsonObject?msg=Hi
+curl -i http://localhost:8888/rest/v1/teachers/ageRange/19/25
+curl -X DELETE -i http://localhost:8888/rest/v1/teachers/teacherId/1
+```
+
 ## To access h2 db console with browser
 + start the app
 + make sure app is not protected with spring security (it is not a dependency in pom.xml). Because /h2-console will be protected by Spring security as well, if it is on
@@ -71,7 +93,7 @@ mongo
 >use admin
 >db.shutdownServer()
 ```
-+ or you can shutdown mongoDb by issuing at command promt
++ or you can shutdown mongoDb by issuing at command prompt
 ```
 mongo --eval "db.getSiblingDB('admin').shutdownServer()"
 ```
