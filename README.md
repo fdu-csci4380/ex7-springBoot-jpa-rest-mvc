@@ -87,6 +87,16 @@ mkdir -p /c/data/db
 + then connect to it via mongodb client that comes with mongodb install, at command prompt issue
 ```
 mongo
+mongo --version
+mongo -h
+```
++ to query mongoDb
+```
+mongo
+> show dbs
+> use UniversityDb
+> show collections
+> db.Teachers.find()
 ```
 + to shutdown the mongoDb that is running from mongodb client mongo command prompt
 ```
