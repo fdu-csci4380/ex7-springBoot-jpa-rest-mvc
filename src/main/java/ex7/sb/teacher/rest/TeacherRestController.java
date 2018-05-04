@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ex7.sb.teacher.mongodb.model.Teacher;
@@ -26,6 +28,9 @@ import ex7.sb.teacher.mongodb.repo.TeacherRepository;
  * @author ilker
  *
  */
+//@Controller
+//@ResponseBody
+// NOTE ilker, below 1 line is equivalent to above 2 lines working together
 @RestController
 @RequestMapping("rest/v1/teachers")
 public class TeacherRestController {

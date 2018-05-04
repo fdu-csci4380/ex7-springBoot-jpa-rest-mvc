@@ -14,15 +14,19 @@ import ex7.sb.student.jpa.model.Student;
 
 /**
  * Couple of example native queries
- *   @Query("select s from Student s where lower(s.name) = lower(:studentName)")
- *   public Country findByNameIgnoreCaseQuery(@Param("studentName") String studentName);
+ *   @Query("select s from STUDENT s where lower(s.name) = lower(:studentName)")
+ *   public Student findByNameIgnoreCaseQuery(@Param("studentName") String studentName);
  * 
- *   @Query("select s from Student s where c.name = ?1")
- *   public Country findByNameQueryPositionalParam(String studentName);
+ *   @Query("select s from STUDENT s where s.name = ?1")
+ *   public Student findByNameQueryPositionalParam(String studentName);
  * 
  * @author ilker
  *
  */
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 	public Optional<List<Student>> findByName(String name);
+	
+	@Query("select s from STUDENT s where lower(s.name) = lower(:studentName)")
+	public Student findByNameIgnoreCaseQuery(@Param("studentName") String studentName);
+	
 }
