@@ -152,6 +152,7 @@ cd ex7-springBoot-jpa-rest-mvc
 mkdir -p src/ui-angular
 cd src/ui-angular
 ng new angular-hello
+```
 + run the angular app to serve at default port 4200
 ```
 ng serve
