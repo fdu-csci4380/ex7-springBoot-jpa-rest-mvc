@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -68,6 +69,11 @@ public class StudentRestController {
 		return studentRepository.findById(savedStudent.getStudentId());
 	}
 	
+	// curl -X DELETE -i http://localhost:8888/rest/v1/students/2
+	@DeleteMapping("/{petId}")
+	public  void delete(@PathVariable("petId") Integer id) {
+		studentRepository.deleteById(id);
+	}
 	
 	// curl -i http://localhost:8888/rest/v1/students/findByNameIgnoreCaseQuery/ilker
 	// curl -i http://localhost:8888/rest/v1/students/findByNameIgnoreCaseQuery/ILKer
