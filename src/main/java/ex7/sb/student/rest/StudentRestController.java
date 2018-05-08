@@ -70,8 +70,8 @@ public class StudentRestController {
 	}
 	
 	// curl -X DELETE -i http://localhost:8888/rest/v1/students/2
-	@DeleteMapping("/{petId}")
-	public  void delete(@PathVariable("petId") Integer id) {
+	@DeleteMapping("/{studentId}")
+	public  void delete(@PathVariable("studentId") Integer id) {
 		studentRepository.deleteById(id);
 	}
 	
