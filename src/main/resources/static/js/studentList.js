@@ -12,7 +12,8 @@ $(document).ready(function(){
 		// NOTE ilker if you have href="" in anchor tag this jQuery marker triggers on, then you need to have below line to be able to see modal popup
 		//         or if you have th:href="@{detail/(studentId=${student.studentId})}", then you need below line to stop it from showing the result as json object
 		event.preventDefault();	
-		var href = $(this).attr('href');
+		var href = $(this).attr('href');	// NOTE ilker will be like;   /mvc/student/detail/?studentId=110
+//		console.log(href);   // TODO commentMe
 		var text = $(this).text();
 		if(text=='Edit') {
 			// NOTE ilker, make ajax (REST) call via jQuery's get. Then once REST service returns data (in data4student variable) back, below function executes "asynchronously"

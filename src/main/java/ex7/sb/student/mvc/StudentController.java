@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -79,7 +80,7 @@ public class StudentController {
 	// NOTE ilker this is equivalent to findOne or findById
 	@GetMapping("/detail")	// /mvc/student/detail
 	@ResponseBody			// NOTE ilker since will be using jQuery for this, let it return the StudentEntity
-	public Student showStudentDetail(Integer studentId) {
+	public Student showStudentDetail(@RequestParam("studentId") Integer studentId) {
 		Optional<Student> student = studentRepository.findById(studentId);
 		return student.isPresent() ? student.get() : null;
 	}
