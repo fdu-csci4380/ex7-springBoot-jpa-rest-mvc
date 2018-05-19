@@ -78,9 +78,9 @@ public class StudentRestController {
 	// curl -i http://localhost:8888/rest/v1/students/findByNameIgnoreCaseQuery/ilker
 	// curl -i http://localhost:8888/rest/v1/students/findByNameIgnoreCaseQuery/ILKer
 	@GetMapping("/findByNameIgnoreCaseQuery/{studentName}")
-	public  Student findByNameIgnoreCaseQuery(@PathVariable String studentName) {
-		Student student = studentRepository.findByNameIgnoreCaseQuery(studentName);
-		return student;
+	public  Optional<List<Student>> findByNameIgnoreCaseQuery(@PathVariable String studentName) {
+		Optional<List<Student>> students = studentRepository.findByNameIgnoreCaseQuery(studentName);
+		return students;
 	}
 	
 }

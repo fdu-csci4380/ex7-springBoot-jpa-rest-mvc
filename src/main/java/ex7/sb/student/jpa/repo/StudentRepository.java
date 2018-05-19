@@ -30,6 +30,6 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 	
 	// NOTE ilker an example "native query using @Query"
 	@Query("select s from STUDENT s where lower(s.name) = lower(:studentName)")
-	public Student findByNameIgnoreCaseQuery(@Param("studentName") String studentName);
+	public Optional<List<Student>> findByNameIgnoreCaseQuery(@Param("studentName") String studentName);
 	
 }
