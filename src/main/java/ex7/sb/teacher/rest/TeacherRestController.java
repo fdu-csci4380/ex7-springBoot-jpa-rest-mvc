@@ -84,6 +84,31 @@ public class TeacherRestController {
 		Optional<List<Teacher>> teachers = teacherRepository.findByTeacherId(teacherId);
 		return teachers;
 	}
+
+	// curl -i http://localhost:8888/rest/v1/teachers/name/Ali
+	@GetMapping("/name/{name}")
+	public  Optional<List<Teacher>> findByNameIgnoringCase(@PathVariable String name) {
+//		name = "/" + name + "/i";	// NOTE ilker this does not work, because it gets translated to "/ilKER/i" which does not work. /ilKER/i would have worked
+		String nameRegex = "(?i)(" + name + ")";
+		Optional<List<Teacher>> teachers = teacherRepository.findByNameRegex(nameRegex);
+		return teachers;
+	}
+
+	// curl -i http://localhost:8888/rest/v1/teachers/name2/Ali
+	@GetMapping("/name2/{name}")
+	public  Optional<List<Teacher>> findByNameIgnoringCase2(@PathVariable String name) {
+//		name = "/" + name + "/i";	// NOTE ilker this does not work, because it gets translated to "/ilKER/i" which does not work. /ilKER/i would have worked
+		String nameRegex = "(?i)(" + name + ")";  // NOTE ilker matches value of name anywhere in name attribute ignoring case
+		Optional<List<Teacher>> teachers = teacherRepository.findMyByNameRegexp(nameRegex);
+		return teachers;
+	}
+
+	// curl -i http://localhost:8888/rest/v1/teachers/name2b
+	@GetMapping("/name2b")
+	public  Optional<List<Teacher>> findByNameIgnoringCase2b() {
+		Optional<List<Teacher>> teachers = teacherRepository.findMyByNameRegexp2b();
+		return teachers;
+	}
 	
 	// curl -i http://localhost:8888/rest/v1/teachers/ageRange/19/25
 	@GetMapping("/ageRange/{ageGT}/{ageLT}")
